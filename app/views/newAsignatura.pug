@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h1 NuevaMatricula
+  p Alta de nueva asignatura
+  form(id="newAsignatura", method="post", action="/asignatura/new")
+    label(for="profesor") profesores: 
+    select(name="profesor")
+      each profesor in profesores
+        option(value=profesor._id)= profesor.nombre
+    br
+    label(for="alumnos") alumnos : 
+    br 
+    each alumno in alumnos  
+      label(for=alumno._id)= alumno.nombre + ":" 
+      input(type="checkbox", value=alumno._id, name="alumnos") 
+      br
+    label(for="nombre") nombre asignatura
+    input(type="text", name="nombre") 
+    br 
+    input(type="submit", value="asignar") 
+
